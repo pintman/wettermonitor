@@ -7,6 +7,7 @@ OUTCROPPED=forecast-cropped.png
 DIMENSION=1100x700+130+400
 DPI=300
 
+# Download pdf with forecast
 wget -O $OUTPDF $PDFURL
 
 # convert to image
