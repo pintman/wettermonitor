@@ -20,3 +20,11 @@ convert -density $DPI $OUTPDF $OUTPNG
 # crop image
 convert -crop $DIMENSION +repage $OUTPNG $OUTCROPPED
 convert -crop $DIMENSION_TOMORROW +repage $OUTPNG $OUTTOMORROW
+
+# TODO use SVG instead of bitmap
+#
+# convert to svg
+#inkscape --without-gui --file=$OUTPDF --export-plain-svg=forecast.svg
+#
+# after that only the viewbBox has to be altered.
+# https://wiki.selfhtml.org/wiki/SVG/Tutorials/Einstieg/SVG_in_responsiven_Webseiten#viewBox
