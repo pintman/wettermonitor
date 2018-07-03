@@ -29,7 +29,10 @@ inkscape --without-gui --file=$OUTPDF --export-plain-svg=$OUTSVG
 
 # change viewbox size
 # -i edit files in place
-sed -i -e '10s/height=.*/height="800.0"/' -e '11s/width=.*/width="600.0"/' $OUTSVG
+sed -i -e '10s/height=.*/height="800.0"/' \
+  -e '11s/width=.*/width="600.0"/'\
+  -e '9s/viewBox=.*/viewBox="30 90 600 800"   preserveAspectRatio="slice"/'\
+  $OUTSVG
 
 #python2 weather-script.py
 rsvg-convert --background-color=white -o $OUTPNG $OUTSVG
