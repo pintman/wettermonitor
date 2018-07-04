@@ -29,13 +29,22 @@ inkscape --without-gui --file=$OUTPDF --export-plain-svg=$OUTSVG
 
 # change viewbox size
 # -i edit files in place
-sed -i -e '10s/height=.*/height="800.0"/' \
-  -e '11s/width=.*/width="600.0"/'\
-  -e '9s/viewBox=.*/viewBox="30 90 600 800"   preserveAspectRatio="slice"/'\
+#sed -i -e '10s/height=.*/height="800.0"/' \
+#  -e '11s/width=.*/width="600.0"/'\
+#  -e '9s/viewBox=.*/viewBox="30 90 600 800"   preserveAspectRatio="slice"/'\
+#  $OUTSVG
+
+# landscape
+sed -i -e '10s/height=.*/height="600.0"/' \
+  -e '11s/width=.*/width="800.0"/'\
+  -e '9s/viewBox=.*/viewBox="30 90 700 600"   preserveAspectRatio="slice"/'\
   $OUTSVG
+
 
 #python2 weather-script.py
 rsvg-convert --background-color=white -o $OUTPNG $OUTSVG
+# rotate landscape image
+convert $OUTPNG -rotate "90" $OUTPNG
 pngcrush -c 0 -ow $OUTPNG
 #cp -f weather-script-output.png /path/to/web/server/directory/weather-script-output.png
 
